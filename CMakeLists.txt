@@ -24,10 +24,15 @@ if(NOT libtorch_POPULATED)
   set(TORCH_LIBRARIES ${libtorch_SOURCE_DIR}/lib)
 endif()
 
-# Add your executable and include libtorch
-add_executable(app main.cpp)
-target_include_directories(app PRIVATE ${TORCH_INCLUDE_DIRS})
-target_link_directories(app PRIVATE ${TORCH_LIBRARIES})
-target_link_libraries(app PRIVATE torch)
+set(EXES
+  00_simple_1x1_forward_pass
+)
 
-set_property(TARGET app PROPERTY CXX_STANDARD 20)
+foreach(EXE ${EXES})
+  # Add your executable and include libtorch
+  add_executable(${EXE} src/${EXE}.cpp)
+  target_include_directories(${EXE} PRIVATE ${TORCH_INCLUDE_DIRS})
+  target_link_directories(${EXE} PRIVATE ${TORCH_LIBRARIES})
+  target_link_libraries(${EXE} PRIVATE torch c10 torch_cpu)
+  set_property(TARGET ${EXE} PROPERTY CXX_STANDARD 20)
+endforeach()
