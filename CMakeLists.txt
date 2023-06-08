@@ -24,6 +24,13 @@ if(NOT libtorch_POPULATED)
   set(TORCH_LIBRARIES ${libtorch_SOURCE_DIR}/lib)
 endif()
 
+FetchContent_Declare(
+  doctest
+  GIT_REPOSITORY https://github.com/onqtam/doctest.git
+  GIT_TAG        2.4.4
+)
+FetchContent_MakeAvailable(doctest)
+
 set(EXES
   00_simple_1x1_forward_pass
 )
@@ -33,6 +40,6 @@ foreach(EXE ${EXES})
   add_executable(${EXE} src/${EXE}.cpp)
   target_include_directories(${EXE} PRIVATE ${TORCH_INCLUDE_DIRS})
   target_link_directories(${EXE} PRIVATE ${TORCH_LIBRARIES})
-  target_link_libraries(${EXE} PRIVATE torch c10 torch_cpu)
+  target_link_libraries(${EXE} PRIVATE torch c10 torch_cpu doctest)
   set_property(TARGET ${EXE} PROPERTY CXX_STANDARD 20)
 endforeach()

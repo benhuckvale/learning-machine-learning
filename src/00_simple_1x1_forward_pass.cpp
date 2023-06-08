@@ -1,6 +1,9 @@
 #include <torch/torch.h>
+#undef CHECK // Undefine conflicting macro
+#define DOCTEST_CONFIG_IMPLEMENT
+#include <doctest/doctest.h>
 
-int main()
+double simple_forward_pass()
 {
     // Define the input data
     // 'ones()' creates a tensor of dimension 1x1 filled with 1s. I.e. input is '1'
@@ -23,8 +26,21 @@ int main()
     //        = 1 * 2.0 + 0.5
     //        = 2.5
 
-    // Print the output
-    std::cout << "Output: " << output << std::endl;
+    return output.item<double>();
+}
 
+TEST_CASE("Simple Forward Pass")
+{
+    CHECK(simple_forward_pass() == doctest::Approx(2.5));
+}
+
+int main(int argc, char* argv[])
+{
+    doctest::Context context;
+    context.applyCommandLine(argc, argv);
+    if (context.shouldExit()) return context.run();
+
+    auto output{simple_forward_pass()};
+    std::cout << "Output: " << output << std::endl;
     return 0;
 };
