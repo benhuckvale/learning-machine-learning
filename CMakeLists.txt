@@ -33,6 +33,7 @@ FetchContent_MakeAvailable(doctest)
 
 set(EXES
   00_simple_1x1_forward_pass
+  01_simple_perceptron
 )
 
 foreach(EXE ${EXES})
