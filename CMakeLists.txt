@@ -35,6 +35,7 @@ set(EXES
   00_simple_1x1_forward_pass
   01_simple_perceptron
   02_flower_perceptron
+  03_handrolled_forward_pass
 )
 
 foreach(EXE ${EXES})
