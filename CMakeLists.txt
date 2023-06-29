@@ -36,10 +36,10 @@ set(EXES
   01_simple_perceptron
   02_flower_perceptron
   03_handrolled_forward_pass
+  06_handrolled_single_neuron
 )
 
 foreach(EXE ${EXES})
-  # Add your executable and include libtorch
   add_executable(${EXE} src/${EXE}.cpp)
   target_include_directories(${EXE} PRIVATE ${TORCH_INCLUDE_DIRS})
   target_link_directories(${EXE} PRIVATE ${TORCH_LIBRARIES})
