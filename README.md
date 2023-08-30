@@ -37,9 +37,23 @@ personally want to ground my understanding of machine learning algorithms at
 the low-level of C++ and gain insight into the technical challenges of
 implementing them efficiently on CPU and GPU architectures.
 
-# Content
+## Building and running
+
+The prerequisite is that you need [cmake](https://cmake.org/download/)
+installed. Then in your shell you should be able to:
+```
+cmake -B build -S .
+cmake --build build
+```
+
+And then you can run things, for example:
+```
+build/00_simple_1x1_forward_pass
+```
+
+## Descriptions of each example
  
-## Simplest possible forward pass
+### Simplest possible forward pass
 
 Uses libtorch.
 
@@ -50,7 +64,7 @@ program that uses libtorch.
 
 [00_simple_1x1_forward_pass.cpp](src/00_simple_1x1_forward_pass.cpp)
 
-## Simple Perceptron
+### Simple Perceptron
 
 Uses libtorch.
 
@@ -59,18 +73,19 @@ does anything useful.
 
 [01_simple_perceptron.cpp](src/01_simple_perceptron.cpp)
 
-## Simple flower perceptron
+### Simple flower perceptron
 
 Uses libtorch.
 
-The 'Iris flower data set' is a particularly famous dataset, which is used now
-very much to teach data science. We'll take that as inspiration and do
-something simple, by pretending we have a few flowers (i.e. no more than 5
-flowers) with different petal lengths and widths and try to classify them.
+The [Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)
+is a particularly famous dataset, which is used now very much to teach data
+science. We'll take that as inspiration and do something simple, by pretending
+we have a few flowers (i.e. no more than 5 flowers) with different petal
+lengths and widths and try to classify them.
 
 [02_flower_perceptron.cpp](src/02_flower_perceptron.cpp)
 
-## Single Neuron Example
+### Single Neuron Example
 
 No dependencies.
 
